@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Page</title>
+    <style>
+        nav ul li a:hover {
+            background-color: #ffffff;
+            color: #2e8540;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form input:focus, form textarea:focus {
+            border-color: #2e8540;
+            outline: none;
+        }
+        .success-message {
+            display: none;
+            color: green;
+            font-weight: bold;
+        }
+        .error-message {
+            display: none;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body style="background-color: #d9ead3; color: #333333; font-family: Arial, sans-serif;">
+    <header style="background-color: #2e8540; color: #ffffff; padding: 20px; text-align: center;">
+        <h1>Virentina Rahel's Personal Page</h1>
+        <nav>
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="display: inline; margin-right: 20px;"><a href="index.html" onmouseover="ubahWarnaHeader(this)" onmouseout="kembaliWarnaHeader(this)" style="color: #ffffff; text-decoration: none;">Home</a></li>
+                <li style="display: inline; margin-right: 20px;"><a href="about_me.html" onmouseover="ubahWarnaHeader(this)" onmouseout="kembaliWarnaHeader(this)" style="color: #ffffff; text-decoration: none;">About Me</a></li>
+                <li style="display: inline; margin-right: 20px;"><a href="blog.html" onmouseover="ubahWarnaHeader(this)" onmouseout="kembaliWarnaHeader(this)" style="color: #ffffff; text-decoration: none;">Blog</a></li>
+                <li style="display: inline; margin-right: 20px;"><a href="gallery.html" onmouseover="ubahWarnaHeader(this)" onmouseout="kembaliWarnaHeader(this)" style="color: #ffffff; text-decoration: none;">Gallery</a></li>
+                <li style="display: inline;"><a href="contact.html" onmouseover="ubahWarnaHeader(this)" onmouseout="kembaliWarnaHeader(this)" style="color: #ffffff; text-decoration: none;">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main style="padding: 20px;">
+        <section style="background-color: #61a08a; padding: 20px; border-radius: 10px;">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach me out</output></p>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" style="background-color: #2e8540; color: #ffffff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+            </form>
+            <p class="success-message" id="successMessage">Your message has been sent successfully!</p>
+            <p class="error-message" id="errorMessage">Please fill out all fields correctly.</p>
+        </section>
+    </main>
+    <footer style="background-color: #2e8540; color: #ffffff; padding: 20px; text-align: center;">
+        <p>&copy; 2024 Virentina Rahel Paat. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function ubahWarnaHeader(elemen) {
+            elemen.style.backgroundColor = "#ffffff";
+            elemen.style.color = "#2e8540";
+            elemen.style.padding = "5px 10px";
+            elemen.style.borderRadius = "5px";
+        }
+
+        function kembaliWarnaHeader(elemen) {
+            elemen.style.backgroundColor = "#2e8540";
+            elemen.style.color = "#ffffff";
+            elemen.style.padding = "initial";
+            elemen.style.borderRadius = "initial";
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var successMessage = document.getElementById('successMessage');
+            var errorMessage = document.getElementById('errorMessage');
+
+            if (name && email && message) {
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+
+                // Clear form fields
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
